@@ -1,0 +1,23 @@
+name: Unit Tests
+run-name: ${{ github.actor }} is running our tests 🚀
+on: [push]
+jobs:
+  Unit-Tests:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+        matrix:
+            os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Check out Repository Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run Unit Tests
+        run: |
+          python test/run_all_tests.py loop://

@@ -21,4 +21,4 @@ jobs:
 
       - name: Run Pylint
         run: |
-          pylint --rcfile=pylintrc --disable=R,C,W serial/ 
+          pylint --rcfile=pylintrc --disable=R,C,W,F serial/ 

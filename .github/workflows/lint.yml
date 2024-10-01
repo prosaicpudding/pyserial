@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is running our tests 🚀
 on: [pull_request]
 jobs:
   Pylint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Check out Repository Code

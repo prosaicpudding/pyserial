@@ -9,10 +9,10 @@ jobs:
       - name: Check out Repository Code
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.9
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: 3.11
 
       - name: Install Dependencies
         run: |
@@ -21,4 +21,4 @@ jobs:
 
       - name: Run Pylint
         run: |
-          pylint --rcfile=pylintrc serial/ test/
+          pylint --rcfile=pylintrc --fail-under=7.94 serial/ test/ # 7.94 is what the main branch was scoring when this project was created.

@@ -1,6 +1,6 @@
 name: Unit Tests
 run-name: ${{ github.actor }} is running our tests 🚀
-on: [push]
+on: [push, pull_request]
 jobs:
   Unit-Tests:
     runs-on: ${{ matrix.os }}

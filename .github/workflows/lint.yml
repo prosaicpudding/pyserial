@@ -9,10 +9,10 @@ jobs:
       - name: Check out Repository Code
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: Set up Python 3.6
         uses: actions/setup-python@v4
         with:
-          python-version: 3.11
+          python-version: 3.6
 
       - name: Install Dependencies
         run: |

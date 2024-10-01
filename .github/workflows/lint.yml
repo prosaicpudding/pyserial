@@ -21,4 +21,4 @@ jobs:
 
       - name: Run Pylint
         run: |
-          pylint --rcfile=pylintrc --fail-under serial/ test/
+          pylint --rcfile=pylintrc serial/ test/

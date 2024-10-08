@@ -12,10 +12,12 @@ This module can be executed to get a list of ports (``python -m
 serial.tools.list_ports``). It also contains the following functions.
 
 
-.. function:: comports(include_links=False)
+.. function:: comports(include_links=False, hide_subsystems=["platform"])
 
     :param bool include_links: include symlinks under ``/dev`` when they point
                                to a serial port
+    :param list hide_subsystems: hide devices that belong to the given
+                                 subsystems (Linux only) 
     :return: a list containing :class:`ListPortInfo` objects.
 
     The function returns a list of :obj:`ListPortInfo` objects.

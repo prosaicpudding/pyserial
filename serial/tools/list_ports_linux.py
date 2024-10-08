@@ -90,8 +90,8 @@ class SysFS(list_ports_common.ListPortInfo):
 
 def comports(include_links=False, hide_subsystems=["platform"]):
     devices = set()
-    with open('/proc/devices') as file_handler:
-        for driver in file_handler.readlines():
+    with open('/proc/tty/drivers') as drivers_file:
+        for driver in drivers_file.readlines():
             items = driver.strip().split()
             try:
                 if items[4] == 'serial':
@@ -106,12 +106,13 @@ def comports(include_links=False, hide_subsystems=["platform"]):
                 devices.update(glob.glob('/dev/ttyAP*'))    # Advantech multi-port serial controllers
                 devices.update(glob.glob('/dev/ttyGS*'))    # https://www.kernel.org/doc/Documentation/usb/gadget_serial.txt
                 devices.update(glob.glob('/dev/ttymxc*'))   # yocto linux
+                break
 
     if include_links:
         devices.update(list_ports_common.list_links(devices))
     return [info
             for info in [SysFS(d) for d in devices]
-            if not info.subsystem in hide_subsystems]    # hide non-present internal serial ports
+            if info.subsystem not in hide_subsystems]    # hide non-present internal serial ports
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # test

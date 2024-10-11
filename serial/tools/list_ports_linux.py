@@ -94,7 +94,7 @@ def comports(include_links=False, hide_subsystems=["platform"]):
         with open('/proc/tty/drivers') as drivers_file:
             for driver in drivers_file:
                 items = driver.strip().split()
-                if items.get(4) == 'serial':
+                if items[4] == 'serial':
                     devices.update(glob.glob(items[1]+'*'))
 
     except IOError:
